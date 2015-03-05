@@ -42,7 +42,7 @@ module.exports = function (grunt) {
         commit: true,
         push: true,
         connectCommits: false,
-        message: 'Built using Angular Fullstack v<%= pkg.version %> from commit %sourceCommit%'
+        message: 'Built using Angular Fullstack Bluemix v<%= pkg.version %> from commit %sourceCommit%'
       },
       release: {
         options: {
@@ -152,7 +152,7 @@ module.exports = function (grunt) {
         ]
       ];
 
-      var gen = helpers.createGenerator('angular-fullstack:app', deps);
+      var gen = helpers.createGenerator('angular-fullstack-bluemix:app', deps);
 
       helpers.mockPrompt(gen, options);
       gen.run({}, function () {

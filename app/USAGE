@@ -1,5 +1,5 @@
 Description:
-    Creates an full-stack AngularJS + Node app
+    Creates an full-stack AngularJS + Node app for deployment on IBM Bluemix
 
 Example:
-    yo angular-fullstack
+    yo angular-fullstack-bluemix

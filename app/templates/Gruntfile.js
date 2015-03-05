@@ -16,11 +16,15 @@ module.exports = function (grunt) {
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn',
     protractor: 'grunt-protractor-runner',
-    buildcontrol: 'grunt-build-control'
+    buildcontrol: 'grunt-build-control',
+    shell: 'grunt-shell'
   });
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
+
+  // needed for configuration variables for bluemix push
+  var pkg = grunt.file.readJSON('package.json');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -574,7 +578,7 @@ module.exports = function (grunt) {
     sass: {
       server: {
         options: {
-          loadPath: [
+            includePaths: [
             '<%%= yeoman.client %>/bower_components',
             '<%%= yeoman.client %>/app',
             '<%%= yeoman.client %>/components'
@@ -700,6 +704,20 @@ module.exports = function (grunt) {
           '<%%= yeoman.client %>/index.html': [
             '<%%= yeoman.client %>/{app,components}/**/*.css'
           ]
+        }
+      }
+    },
+    shell: {
+      push: {
+        command: function() {
+          grunt.log.writeln('Pushing to Bluemix using manifest.yml');
+          return 'cd dist; cf push --no-start';
+        }
+      },
+      start: {
+        command: function() {
+          grunt.log.writeln('Starting app on bluemix');
+          return 'cf start ' + pkg.name;
         }
       }
     },
@@ -835,4 +853,11 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('bluemix', [
+    'build',
+    'test',
+    'shell:push',
+    'shell:start'
+  ]); 
 };
