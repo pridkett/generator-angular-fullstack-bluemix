@@ -1,18 +1,20 @@
-# AngularJS Full-Stack generator [![Build Status](https://travis-ci.org/DaftMonk/generator-angular-fullstack.svg?branch=master)](http://travis-ci.org/DaftMonk/generator-angular-fullstack) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/DaftMonk/generator-angular-fullstack)
+# AngularJS Full-Stack Bluemix generator [![Build Status](https://travis-ci.org/pridkett/generator-angular-fullstack-bluemix.svg?branch=master)](http://travis-ci.org/pridkett/generator-angular-fullstack-bluemix)
 
-> Yeoman generator for creating MEAN stack applications, using MongoDB, Express, AngularJS, and Node - lets you quickly set up a project following best practices.
+> Yeoman generator for creating MEAN stack applications, using MongoDB, Express, AngularJS, and Node - lets you quickly set up a project following best practices and then deploy to Bluemix.
+
+This project is based on the excellent [angular-generator-fullstack](https://github.com/DaftMonk/generator-angular-fullstack) project.
 
 ## Example project
 
-Generated with defaults: http://fullstack-demo.herokuapp.com/.
+Generated with defaults: http://fullstack-demo.mybluemix.net/.
 
-Source code: https://github.com/DaftMonk/fullstack-demo
+Source code: https://github.com/pridkett/fullstack-demo
 
 ## Usage
 
-Install `generator-angular-fullstack`:
+Install `generator-angular-fullstack-bluemix`:
 ```
-npm install -g generator-angular-fullstack
+npm install -g generator-angular-fullstack-bluemix
 ```
 
 Make a new directory, and `cd` into it:
@@ -20,9 +22,9 @@ Make a new directory, and `cd` into it:
 mkdir my-new-project && cd $_
 ```
 
-Run `yo angular-fullstack`, optionally passing an app name:
+Run `yo angular-fullstack-bluemix`, optionally passing an app name:
 ```
-yo angular-fullstack [app-name]
+yo angular-fullstack-bluemix [app-name]
 ```
 
 Run `grunt` for building, `grunt serve` for preview, and `grunt serve:dist` for a preview of the built app.
@@ -63,28 +65,28 @@ A grunt task looks for new files in your `client/app` and `client/components` fo
 Available generators:
 
 * App
-    - [angular-fullstack](#app) (aka [angular-fullstack:app](#app))
+    - [angular-fullstack-bluemix](#app) (aka [angular-fullstack-bluemix:app](#app))
 * Server Side
-    - [angular-fullstack:endpoint](#endpoint)
+    - [angular-fullstack-bluemix:endpoint](#endpoint)
 * Client Side
-    - [angular-fullstack:route](#route)
-    - [angular-fullstack:controller](#controller)
-    - [angular-fullstack:filter](#filter)
-    - [angular-fullstack:directive](#directive)
-    - [angular-fullstack:service](#service)
-    - [angular-fullstack:provider](#service)
-    - [angular-fullstack:factory](#service)
-    - [angular-fullstack:decorator](#decorator)
+    - [angular-fullstack-bluemix:route](#route)
+    - [angular-fullstack-bluemix:controller](#controller)
+    - [angular-fullstack-bluemix:filter](#filter)
+    - [angular-fullstack-bluemix:directive](#directive)
+    - [angular-fullstack-bluemix:service](#service)
+    - [angular-fullstack-bluemix:provider](#service)
+    - [angular-fullstack-bluemix:factory](#service)
+    - [angular-fullstack-bluemix:decorator](#decorator)
 * Deployment
-    - [angular-fullstack:openshift](#openshift)
-    - [angular-fullstack:heroku](#heroku)
+    - [angular-fullstack-bluemix:openshift](#openshift)
+    - [angular-fullstack-bluemix:heroku](#heroku)
 
 ### App
 Sets up a new AngularJS + Express app, generating all the boilerplate you need to get started.
 
 Example:
 ```bash
-yo angular-fullstack
+yo angular-fullstack-bluemix
 ```
 
 ### Endpoint
@@ -93,7 +95,7 @@ Generates a new API endpoint.
 
 Example:
 ```bash
-yo angular-fullstack:endpoint message
+yo angular-fullstack-bluemix:endpoint message
 [?] What will the url of your endpoint be? /api/messages
 ```
 
@@ -110,7 +112,7 @@ Generates a new route.
 
 Example:
 ```bash
-yo angular-fullstack:route myroute
+yo angular-fullstack-bluemix:route myroute
 [?] Where would you like to create this route? client/app/
 [?] What will the url of your route be? /myroute
 ```
@@ -129,7 +131,7 @@ Generates a controller.
 
 Example:
 ```bash
-yo angular-fullstack:controller user
+yo angular-fullstack-bluemix:controller user
 [?] Where would you like to create this controller? client/app/
 ```
 
@@ -143,7 +145,7 @@ Generates a directive.
 
 Example:
 ```bash
-yo angular-fullstack:directive myDirective
+yo angular-fullstack-bluemix:directive myDirective
 [?] Where would you like to create this directive? client/app/
 [?] Does this directive need an external html file? Yes
 ```
@@ -159,7 +161,7 @@ Produces:
 
 Example:
 ```bash
-yo angular-fullstack:directive simple
+yo angular-fullstack-bluemix:directive simple
 [?] Where would you like to create this directive? client/app/
 [?] Does this directive need an external html file? No
 ```
@@ -174,7 +176,7 @@ Generates a filter.
 
 Example:
 ```bash
-yo angular-fullstack:filter myFilter
+yo angular-fullstack-bluemix:filter myFilter
 [?] Where would you like to create this filter? client/app/
 ```
 
@@ -188,7 +190,7 @@ Generates an AngularJS service.
 
 Example:
 ```bash
-yo angular-fullstack:service myService
+yo angular-fullstack-bluemix:service myService
 [?] Where would you like to create this service? client/app/
 ```
 
@@ -205,7 +207,7 @@ Generates an AngularJS service decorator.
 
 Example:
 ```bash
-yo angular-fullstack:decorator serviceName
+yo angular-fullstack-bluemix:decorator serviceName
 [?] Where would you like to create this decorator? client/app/
 ```
 
@@ -217,7 +219,7 @@ Produces
 
 Deploying to OpenShift can be done in just a few steps:
 
-    yo angular-fullstack:openshift
+    yo angular-fullstack-bluemix:openshift
 
 A live application URL will be available in the output.
 
@@ -254,7 +256,7 @@ Commit and push the resulting build, located in your dist folder:
 
 Deploying to heroku only takes a few steps.
 
-    yo angular-fullstack:heroku
+    yo angular-fullstack-bluemix:heroku
 
 To work with your new heroku app using the command line, you will need to run any `heroku` commands from the `dist` folder.
 
@@ -382,11 +384,11 @@ An example server component in `server/api`
 
 ## Contribute
 
-See the [contributing docs](https://github.com/DaftMonk/generator-angular-fullstack/blob/master/contributing.md)
+See the [contributing docs](https://github.com/pridkett/generator-angular-fullstack-bluemix/blob/master/contributing.md)
 
 This project has 2 main branches: `master` and `canary`. The `master` branch is where the current stable code lives and should be used for production setups. The `canary` branch is the main development branch, this is where PRs should be submitted to (backport fixes may be applied to `master`).
 
-By seperating the current stable code from the cutting-edge development we hope to provide a stable and efficient workflow for users and developers alike.
+By separating the current stable code from the cutting-edge development we hope to provide a stable and efficient workflow for users and developers alike.
 
 When submitting an issue, please follow the [guidelines](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission). Especially important is to make sure Yeoman is up-to-date, and providing the command or commands that cause the issue.
 
