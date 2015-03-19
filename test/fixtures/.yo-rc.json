@@ -1,5 +1,5 @@
 {
-  "generator-angular-fullstack": {
+  "generator-angular-fullstack-bluemix": {
     "insertRoutes": "true",
     "registerRoutesFile": "server/routes.js",
     "routesNeedle": "// Insert routes below",
