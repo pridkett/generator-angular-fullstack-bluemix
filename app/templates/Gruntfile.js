@@ -409,7 +409,8 @@ module.exports = function (grunt) {
           dest: '<%%= yeoman.dist %>',
           src: [
             'package.json',
-            'server/**/*'
+            'server/**/*',
+            'manifest.yml'
           ]
         }]
       },

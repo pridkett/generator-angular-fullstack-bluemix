@@ -1,0 +1,12 @@
+---
+# manifest.yml for <%= _.slugify(_.humanize(appname)) %>
+# edit for your needs
+applications:
+- name: <%= _.slugify(_.humanize(appname)) %>
+  instances: 1
+  framework: node
+  description: Your generator-angular-fullstack-bluemix project
+  memory: 128M
+  command: NODE_ENV=production node server/app.js
+  domain: mybluemix.net
+  host: <%= _.slugify(_.humanize(appname)) %>
