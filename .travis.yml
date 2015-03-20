@@ -1,11 +1,14 @@
 language: node_js
-env: SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=true
 compiler: gcc
 
 node_js:
   - '0.10'
   - node # fetch latest version of node
   - iojs # fetch latest version of iojs
+
+matrix:
+  allow_failures:
+    - node_js: iojs
 
 before_install:
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
