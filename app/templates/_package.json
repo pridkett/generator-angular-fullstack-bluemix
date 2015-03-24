@@ -72,6 +72,7 @@
     "jshint-stylish": "~0.1.5",
     "connect-livereload": "~0.4.0",
     "karma-ng-scenario": "~0.1.0",
+    "karma-coverage": "^0.2.7",
     "karma-firefox-launcher": "~0.1.3",
     "karma-script-launcher": "~0.1.0",
     "karma-html2js-preprocessor": "~0.1.0",

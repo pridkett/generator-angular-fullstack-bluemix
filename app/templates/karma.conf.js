@@ -38,6 +38,8 @@ module.exports = function(config) {
       '**/*.jade': 'ng-jade2js',
       '**/*.html': 'html2js',
       '**/*.coffee': 'coffee',
+      'client/app/**/*.js': 'coverage',
+      'client/components/**/*.js': 'coverage'
     },
 
     ngHtml2JsPreprocessor: {
@@ -50,6 +52,17 @@ module.exports = function(config) {
 
     // list of files / patterns to exclude
     exclude: [],
+
+    coverageReporter : {
+        reporters : [
+            {
+                type : 'html',
+                dir : 'coverage'
+            },
+        ]
+    },
+
+    reporters: ['progress', 'coverage'],
 
     // web server port
     port: 8080,
