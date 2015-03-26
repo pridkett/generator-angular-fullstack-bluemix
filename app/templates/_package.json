@@ -60,6 +60,7 @@
     "grunt-protractor-runner": "^1.1.0",
     "grunt-injector": "~0.5.4",
     "grunt-karma": "~0.8.2",
+    "grunt-mocha-istanbul": "^2.3.1",
     "grunt-mocha-test": "~0.10.2",<% if(filters.sass) { %>
     "grunt-sass": "^0.18.0",
     "grunt-shell": "^1.1.2",<% } %><% if(filters.stylus) { %>

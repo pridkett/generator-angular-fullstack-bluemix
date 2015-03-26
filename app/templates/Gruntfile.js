@@ -17,7 +17,8 @@ module.exports = function (grunt) {
     cdnify: 'grunt-google-cdn',
     protractor: 'grunt-protractor-runner',
     buildcontrol: 'grunt-build-control',
-    shell: 'grunt-shell'
+    shell: 'grunt-shell',
+    mocha_istanbul: 'grunt-mocha-istanbul'
   });
 
   // Time how long tasks take. Can help when optimizing build times
@@ -72,9 +73,9 @@ module.exports = function (grunt) {
         ],
         tasks: ['injector:css']
       },
-      mochaTest: {
+      mocha_istanbul: {
         files: ['server/**/*.spec.js'],
-        tasks: ['env:test', 'mochaTest']
+        tasks: ['env:test', 'mocha_istanbul']
       },
       jsTest: {
         files: [
@@ -488,11 +489,15 @@ module.exports = function (grunt) {
       }
     },
 
-    mochaTest: {
-      options: {
-        reporter: 'spec'
-      },
-      src: ['server/**/*.spec.js']
+    mocha_istanbul: {
+      coverage: {
+        src: ['server/**/*.spec.js'],
+        options: {
+          mask: '*.spec.js',
+          reportFormats: ['html', 'lcov'],
+          coverageFolder: 'coverage/server'
+        }
+      }
     },
 
     protractor: {
@@ -787,7 +792,7 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'env:all',
         'env:test',
-        'mochaTest'
+        'mocha_istanbul'
       ]);
     }
 
@@ -860,5 +865,5 @@ module.exports = function (grunt) {
     'test',
     'shell:push',
     'shell:start'
-  ]); 
+  ]);
 };
