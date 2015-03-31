@@ -1,3 +1,4 @@
+/*jslint node:true*/
 'use strict';
 var fs = require('fs');
 var path = require('path');
@@ -39,7 +40,7 @@ var AngularFullstackBluemixGenerator = yeoman.generators.Base.extend({
         type: "confirm",
         name: "skipConfig",
         message: "Existing .yo-rc configuration found, would you like to use it?",
-        default: true,
+        default: true
       }], function (answers) {
         this.skipConfig = answers.skipConfig;
 
@@ -166,15 +167,24 @@ var AngularFullstackBluemixGenerator = yeoman.generators.Base.extend({
       type: "confirm",
       name: "socketio",
       message: "Would you like to use socket.io?",
-      // to-do: should not be dependent on mongoose
-      when: function (answers) {
-        return answers.mongoose;
-      },
       default: true
+    }, {
+      type: "confirm",
+      name: "cfenv",
+      message: "Would you like to use cfenv?"
     }], function (answers) {
-      if(answers.socketio) this.filters.socketio = true;
-      if(answers.mongoose) this.filters.mongoose = true;
-      if(answers.auth) this.filters.auth = true;
+      if (answers.cfenv) {
+          this.filters.cfenv = true;
+      }
+      if(answers.socketio) {
+        this.filters.socketio = true;
+      }
+      if(answers.mongoose) {
+        this.filters.mongoose = true;
+      }
+      if(answers.auth) {
+        this.filters.auth = true;
+      }
       if(answers.oauth) {
         if(answers.oauth.length) this.filters.oauth = true;
         answers.oauth.forEach(function(oauthStrategy) {

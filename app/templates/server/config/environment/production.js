@@ -1,15 +1,19 @@
 'use strict';
 
 // Production specific configuration
-// =================================
+// =================================<% if (filters.cfenv) { %>
+var cfenv = require('cfenv');
+var appEnv = cfenv.appEnv();<% } %>
 module.exports = {
   // Server IP
-  ip:       process.env.OPENSHIFT_NODEJS_IP ||
+  ip:       <% if (filters.cfenv) { %>appEnv.bind ||
+            <% } %>process.env.OPENSHIFT_NODEJS_IP ||
             process.env.IP ||
             undefined,
 
   // Server port
-  port:     process.env.OPENSHIFT_NODEJS_PORT ||
+  port:     <% if (filters.cfenv) { %>appEnv.port ||
+            <% } %> process.env.OPENSHIFT_NODEJS_PORT ||
             process.env.PORT ||
             8080,
 

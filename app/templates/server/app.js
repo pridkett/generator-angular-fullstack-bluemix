@@ -7,7 +7,8 @@
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-var express = require('express');<% if (filters.mongoose) { %>
+var express = require('express');<% if (filters.cfenv) { %>
+var cfenv = require('cfenv');<% } %><% if (filters.mongoose) { %>
 var mongoose = require('mongoose');<% } %>
 var config = require('./config/environment');
 <% if (filters.mongoose) { %>
@@ -17,7 +18,8 @@ mongoose.connect(config.mongo.uri, config.mongo.options);
 // Populate DB with sample data
 if(config.seedDB) { require('./config/seed'); }
 
-<% } %>// Setup server
+<% } %>// Setup server<% if (filters.cfenv) { %>
+var appEnv = cfenv.appEnv();<% } %>
 var app = express();
 var server = require('http').createServer(app);<% if (filters.socketio) { %>
 var socketio = require('socket.io')(server, {
