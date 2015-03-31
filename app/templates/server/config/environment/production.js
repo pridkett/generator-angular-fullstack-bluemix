@@ -3,7 +3,7 @@
 // Production specific configuration
 // =================================<% if (filters.cfenv) { %>
 var cfenv = require('cfenv');
-var appEnv = cfenv.appEnv();<% } %>
+var appEnv = cfenv.getAppEnv();<% } %>
 module.exports = {
   // Server IP
   ip:       <% if (filters.cfenv) { %>appEnv.bind ||

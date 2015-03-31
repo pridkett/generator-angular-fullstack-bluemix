@@ -19,7 +19,7 @@ mongoose.connect(config.mongo.uri, config.mongo.options);
 if(config.seedDB) { require('./config/seed'); }
 
 <% } %>// Setup server<% if (filters.cfenv) { %>
-var appEnv = cfenv.appEnv();<% } %>
+var appEnv = cfenv.getAppEnv();<% } %>
 var app = express();
 var server = require('http').createServer(app);<% if (filters.socketio) { %>
 var socketio = require('socket.io')(server, {

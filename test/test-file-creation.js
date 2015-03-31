@@ -18,7 +18,8 @@ describe('angular-fullstack-bluemix generator', function () {
     mongoose: true,
     auth: true,
     oauth: [],
-    socketio: true
+    socketio: true,
+    cfenv: true
   }, dependenciesInstalled = false;
 
   function generatorTest(generatorType, name, mockPrompt, callback) {
