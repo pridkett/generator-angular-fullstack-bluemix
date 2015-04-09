@@ -1,29 +1,33 @@
-'use strict';
+/*jslint browser:true*/
 
-describe('Controller: MainCtrl', function () {
+(function() {
+    'use strict';
 
-  // load the controller's module
-  beforeEach(module('<%= scriptAppName %>'));<% if(filters.socketio) {%>
-  beforeEach(module('socketMock'));<% } %>
+    describe('Controller: MainCtrl', function () {
 
-  var MainCtrl,
-      scope,
-      $httpBackend;
+        // load the controller's module
+        beforeEach(module('<%= scriptAppName %>'));<% if(filters.socketio) {%>
+            beforeEach(module('socketMock'));<% } %>
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
-    $httpBackend = _$httpBackend_;
-    $httpBackend.expectGET('/api/things')
-      .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
+        var MainCtrl,
+        scope,
+        $httpBackend;
 
-    scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
+        // Initialize the controller and a mock scope
+            beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
+            $httpBackend = _$httpBackend_;
+            $httpBackend.expectGET('/api/things')
+            .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
+
+            scope = $rootScope.$new();
+            MainCtrl = $controller('MainCtrl', {
+            $scope: scope
+            });
+            }));
+
+        it('should attach a list of things to the scope', function () {
+            $httpBackend.flush();
+            expect(scope.awesomeThings.length).toBe(4);
+        });
     });
-  }));
-
-  it('should attach a list of things to the scope', function () {
-    $httpBackend.flush();
-    expect(scope.awesomeThings.length).toBe(4);
-  });
-});
+}());

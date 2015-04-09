@@ -8,7 +8,7 @@ angular.module('<%= scriptAppName %>')
       $scope.awesomeThings = awesomeThings;<% if(filters.socketio) { %>
       socket.syncUpdates('thing', $scope.awesomeThings);<% } %>
     });
-<% if(filters.mongoose) { %>
+<% if(filters.mongoose || filters.socketio) { %>
     $scope.addThing = function() {
       if($scope.newThing === '') {
         return;
@@ -18,7 +18,7 @@ angular.module('<%= scriptAppName %>')
     };
 
     $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
+      $http.delete('/api/things/' + thing.<% if (filters.mongoose) { %>_<% } %>id);
     };<% } %><% if(filters.socketio) { %>
 
     $scope.$on('$destroy', function () {
