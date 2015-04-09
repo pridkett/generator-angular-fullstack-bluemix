@@ -53,7 +53,7 @@ exports.index = function(req, res) {<% if (!filters.mongoose) { %>
   });<% } %>
 };<% if (!filters.mongoose) { %>
 exports.show = function(req, res) {
-    var id = ParseInt(req.params.id, 10);
+    var id = parseInt(req.params.id, 10);
     if (things[id] !== undefined) {
         return res.json(things[id]);
     } else {
